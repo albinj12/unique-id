@@ -1,8 +1,7 @@
-package main
+package uniqueid
 
 import (
 	"errors"
-	"fmt"
 	"os"
 	"strconv"
 	"time"
@@ -39,7 +38,3 @@ func Generateid(params ...interface{}) (string,error) {
 	}
 }
 
-func main()  {
-	id, _ := Generateid("i")
-	fmt.Println(id)
-}
