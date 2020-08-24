@@ -29,14 +29,25 @@ func Generateid(params ...interface{}) (string,error) {
 		d := strconv.Itoa(time.Now().Day())
 		h := strconv.Itoa(time.Now().Hour())
 		t := strconv.Itoa(time.Now().Minute())
-		s := strconv.Itoa(time.Now().Second())
+		s := strconv.Itoa(time.Now().Second())[:1]
 		n := strconv.Itoa(time.Now().Nanosecond())[2:4]
 		p := strconv.Itoa(os.Getpid())[2:]
-
+		if len(m) == 1{
+			m = "0"+m
+		}
+		if len(d) == 1{
+			d = "0"+d
+		}
+		if len(h) == 1{
+			h = "0"+h
+		}
+		if len(t) == 1{
+			t = "0"+t
+		}
 		uid := n+p+s+t+h+d+m+y
-		if size > 15 {
+		if size > 16 {
 			narray := []string{"1","2","3","4","5","6","7","8","9","0"}
-			b := make([]string, size - 15)
+			b := make([]string, size - 16)
 			for i := range b {
 				b[i] = narray[rand.Intn(len(narray))]
 			}
