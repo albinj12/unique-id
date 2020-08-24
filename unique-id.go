@@ -2,8 +2,10 @@ package uniqueid
 
 import (
 	"errors"
+	"math/rand"
 	"os"
 	"strconv"
+	"strings"
 	"time"
 )
 
@@ -32,6 +34,15 @@ func Generateid(params ...interface{}) (string,error) {
 		p := strconv.Itoa(os.Getpid())[2:]
 
 		uid := n+p+s+t+h+d+m+y
+		if size > 15 {
+			narray := []string{"1","2","3","4","5","6","7","8","9","0"}
+			b := make([]string, size - 15)
+			for i := range b {
+				b[i] = narray[rand.Intn(len(narray))]
+			}
+			uid = uid + strings.Join(b,"")
+		}
+
 		return uid[:size],nil
 	default:
 		return "",errors.New("invalid type specified")
