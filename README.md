@@ -12,22 +12,32 @@ go get github.com/albinj12/unique-id
 # Usage
 Generate number only ID with default length
 ```
-id, _ := uniqueid.Generateid("i")
+id, _ := uniqueid.Generateid("n")
 ```
 
 Generate number only ID with custom length
 ```
-id, _ := uniqueid.Generateid("i", 6)
+id, _ := uniqueid.Generateid("n", 6)
 ```
 
 Generate letter only ID with default length
+```
+id, _ := uniqueid.Generateid("l")
+
+```
+Generate letter only ID with custom length
+```
+id, _ := uniqueid.Generateid("l",20)
+```
+
+Generate alphanumeric ID with default length 
 ```
 id, _ := uniqueid.Generateid("a")
+```
 
+Generate alphanumeric ID with custom length 
 ```
-Generate letter only ID with default length
-```
-id, _ := uniqueid.Generateid("a",20)
+id, _ := uniqueid.Generateid("a", 18)
 ```
 
 ## License
