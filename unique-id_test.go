@@ -7,10 +7,22 @@ import (
 	"testing"
 )
 
-// test for checking the length of generated id
-func TestLength(t *testing.T) {
+// test for checking the length of number id
+func TestLengthnumberID(t *testing.T) {
 	length := rand.Intn(100)
 	id, err := Generateid("n", length)
+	if err != nil {
+		t.Error("error while generating id.", err)
+	}
+	if (len(id)) != length {
+		t.Errorf("got %d, want %d", len(id), length)
+	}
+}
+
+// test for checking the length of letter id
+func TestLengthletterID(t *testing.T) {
+	length := rand.Intn(100)
+	id, err := Generateid("l", length)
 	if err != nil {
 		t.Error("error while generating id.", err)
 	}
@@ -36,7 +48,7 @@ func TestType(t *testing.T) {
 }
 
 // test for checking uniquness of number ID
-func TestUnique(t *testing.T) {
+func TestUniquenumberID(t *testing.T) {
 	totalIDs := 100
 	length := rand.Intn(100)
 	generated := make(map[string]bool)
