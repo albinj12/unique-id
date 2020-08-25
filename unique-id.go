@@ -2,6 +2,7 @@ package uniqueid
 
 import (
 	"errors"
+	"math"
 	"math/rand"
 	"os"
 	"strconv"
@@ -10,6 +11,8 @@ import (
 )
 
 func Generateid(params ...interface{}) (string, error) {
+
+	rand.Seed(time.Now().UTC().UnixNano())
 
 	var size int
 	switch len(params) {
@@ -28,7 +31,7 @@ func Generateid(params ...interface{}) (string, error) {
 	t := strconv.Itoa(time.Now().Minute())
 	s := strconv.Itoa(time.Now().Second())[:1]
 	n := strconv.Itoa(time.Now().Nanosecond())[2:4]
-	p := strconv.Itoa(os.Getpid())[2:]
+	p := strconv.Itoa(os.Getpid())[:3]
 
 	if len(m) == 1 {
 		m = "0" + m
@@ -70,6 +73,21 @@ func Generateid(params ...interface{}) (string, error) {
 		}
 		stringuid := strings.Join(stringuidarray, "")
 		return stringuid, nil
+	case "n":
+		alphabets := []string{"a", "A", "b", "B", "c", "C", "d", "D", "e", "E", "f", "F", "g", "G", "h", "H", "i", "I", "j", "J", "k", "K", "l", "L", "m", "M", "n", "N", "o", "O", "p", "P", "q", "Q", "r", "R", "s", "S", "t", "T", "u", "U", "v", "V", "w", "W", "x", "X", "y", "Y", "z", "Z"}
+		totalletters := math.Floor(0.7 * float64(size))
+		randarray := make([]int, int(totalletters))
+		for i := 0; i < int(totalletters); i++ {
+			randarray[i] = rand.Intn(size)
+		}
+		uidarray := strings.Split(uid, "")
+		for _, v := range randarray {
+			j, _ := strconv.Atoi(uidarray[v])
+			j += rand.Intn(42)
+			uidarray[v] = alphabets[j]
+		}
+		alphauid := strings.Join(uidarray, "")
+		return alphauid, nil
 	default:
 		return "", errors.New("invalid type specified")
 	}
