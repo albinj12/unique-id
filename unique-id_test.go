@@ -53,13 +53,29 @@ func TestUnique(t *testing.T) {
 }
 
 //test for checking uniquness of letter ID
-
 func TestUniqueletterID(t *testing.T) {
 	totalIDs := 100
 	length := rand.Intn(100)
 	generated := make(map[string]bool)
 	for i := 0; i < totalIDs; i++ {
 		id, err := Generateid("l", length)
+		if err != nil {
+			t.Error("error while generating id.", err)
+		}
+		if generated[id] {
+			t.Error("id already created.")
+		}
+		generated[id] = true
+	}
+}
+
+//test for checking uniquness of alphanumeric ID
+func TestUniquealphanumericID(t *testing.T) {
+	totalIDs := 100
+	length := rand.Intn(100)
+	generated := make(map[string]bool)
+	for i := 0; i < totalIDs; i++ {
+		id, err := Generateid("a", length)
 		if err != nil {
 			t.Error("error while generating id.", err)
 		}
