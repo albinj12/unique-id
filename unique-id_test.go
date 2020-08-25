@@ -31,6 +31,18 @@ func TestLengthletterID(t *testing.T) {
 	}
 }
 
+// test for checking the length of alphanumeric id
+func TestLengthalphanumericID(t *testing.T) {
+	length := rand.Intn(100)
+	id, err := Generateid("l", length)
+	if err != nil {
+		t.Error("error while generating id.", err)
+	}
+	if (len(id)) != length {
+		t.Errorf("got %d, want %d", len(id), length)
+	}
+}
+
 // test for checking type
 func TestType(t *testing.T) {
 	length := rand.Intn(100)
