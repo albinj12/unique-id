@@ -10,6 +10,7 @@ import (
 	"time"
 )
 
+// Generateid returns unique ID based on the parameters provided
 func Generateid(params ...interface{}) (string, error) {
 
 	rand.Seed(time.Now().UTC().UnixNano())
