@@ -5,7 +5,7 @@
 
 A unique id generator written in Golang.
 
-Possible to generate ID having letters only or numbers only unique id having custom length.
+Possible to generate ID having letters only or numbers only or alphanumeric unique id having custom length.
 Default length is 16
 
 # Install
