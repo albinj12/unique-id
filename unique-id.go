@@ -86,8 +86,8 @@ func Generateid(params ...interface{}) (string, error) {
 			j += rand.Intn(42)
 			uidarray[v] = alphabets[j]
 		}
-		alphauid := strings.Join(uidarray, "")
-		return alphauid, nil
+		uid := strings.Join(uidarray, "")
+		return uid, nil
 	default:
 		return "", errors.New("invalid type specified")
 	}
