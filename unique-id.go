@@ -26,27 +26,15 @@ func Generateid(params ...interface{}) (string, error) {
 	}
 
 	y := strconv.Itoa(time.Now().Year())[2:]
-	m := strconv.Itoa(int(time.Now().Month()))
-	d := strconv.Itoa(time.Now().Day())
-	h := strconv.Itoa(time.Now().Hour())
-	t := strconv.Itoa(time.Now().Minute())
+	m := "00" + strconv.Itoa(int(time.Now().Month()))
+	d := "00" + strconv.Itoa(time.Now().Day())
+	h := "00" + strconv.Itoa(time.Now().Hour())
+	t := "00" + strconv.Itoa(time.Now().Minute())
 	s := strconv.Itoa(time.Now().Second())[:1]
 	n := strconv.Itoa(time.Now().Nanosecond())[2:4]
 	p := strconv.Itoa(os.Getpid())[:3]
 
-	if len(m) == 1 {
-		m = "0" + m
-	}
-	if len(d) == 1 {
-		d = "0" + d
-	}
-	if len(h) == 1 {
-		h = "0" + h
-	}
-	if len(t) == 1 {
-		t = "0" + t
-	}
-	uid := n + p + s + t + h + d + m + y
+	uid := n + p + s + t[len(t)-2:] + h[len(h)-2:] + d[len(d)-2:] + m[len(m)-2:] + y
 	if size > 16 {
 		narray := []string{"1", "2", "3", "4", "5", "6", "7", "8", "9", "0"}
 		b := make([]string, size-16)
