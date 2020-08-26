@@ -10,7 +10,7 @@ import (
 	"time"
 )
 
-// Generateid returns unique ID based on the parameters provided
+//Generateid returns unique ID based on the parameters provided
 func Generateid(params ...interface{}) (string, error) {
 
 	rand.Seed(time.Now().UTC().UnixNano())
@@ -66,14 +66,13 @@ func Generateid(params ...interface{}) (string, error) {
 		alphabets := []string{"a", "A", "b", "B", "c", "C", "d", "D", "e", "E", "f", "F", "g", "G", "h", "H", "i", "I", "j", "J", "k", "K", "l", "L", "m", "M", "n", "N", "o", "O", "p", "P", "q", "Q", "r", "R", "s", "S", "t", "T", "u", "U", "v", "V", "w", "W", "x", "X", "y", "Y", "z", "Z"}
 
 		uidarray := strings.Split(uid, "")
-		stringuidarray := make([]string, size)
 		for i := 0; i < len(uidarray); i++ {
 			j, _ := strconv.Atoi(uidarray[i])
 			j += rand.Intn(42)
-			stringuidarray[i] = alphabets[j]
+			uidarray[i] = alphabets[j]
 		}
-		stringuid := strings.Join(stringuidarray, "")
-		return stringuid, nil
+		uid = strings.Join(uidarray, "")
+		return uid, nil
 	case "a":
 		alphabets := []string{"a", "A", "b", "B", "c", "C", "d", "D", "e", "E", "f", "F", "g", "G", "h", "H", "i", "I", "j", "J", "k", "K", "l", "L", "m", "M", "n", "N", "o", "O", "p", "P", "q", "Q", "r", "R", "s", "S", "t", "T", "u", "U", "v", "V", "w", "W", "x", "X", "y", "Y", "z", "Z"}
 		totalletters := math.Floor(0.7 * float64(size))
