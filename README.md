@@ -1,9 +1,10 @@
 # unique-id
 
 [![Build Status](https://github.com/albinj12/unique-id/workflows/Tests/badge.svg)](https://github.com/albinj12/unique-id/actions)
-[![License](https://img.shields.io/badge/license-MIT%20License-blue.svg)](LICENSE)
+[![GoDoc](https://godoc.org/github.com/albinj12/unique-id?status.svg)](https://godoc.org/github.com/albinj12/unique-id)
 [![Go Report Card](https://goreportcard.com/badge/github.com/albinj12/unique-id)](https://goreportcard.com/report/github.com/albinj12/unique-id)
-<!--[![GoDoc](https://godoc.org/github.com/matoous/go-nanoid?status.svg)](https://godoc.org/github.com/matoous/go-nanoid)-->
+[![License](https://img.shields.io/badge/license-MIT%20License-blue.svg)](LICENSE)
+
 
 A unique id generator written in Golang.
 
