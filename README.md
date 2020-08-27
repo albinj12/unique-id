@@ -1,7 +1,10 @@
 # unique-id
 
 [![Build Status](https://github.com/albinj12/unique-id/workflows/Tests/badge.svg)](https://github.com/albinj12/unique-id/actions)
+[![GoDoc](https://godoc.org/github.com/albinj12/unique-id?status.svg)](https://godoc.org/github.com/albinj12/unique-id)
+[![Go Report Card](https://goreportcard.com/badge/github.com/albinj12/unique-id)](https://goreportcard.com/report/github.com/albinj12/unique-id)
 [![License](https://img.shields.io/badge/license-MIT%20License-blue.svg)](LICENSE)
+
 
 A unique id generator written in Golang.
 
@@ -16,32 +19,32 @@ go get github.com/albinj12/unique-id
 # Usage
 Generate number only ID with default length
 ```
-id, _ := uniqueid.Generateid("n")
+id, err := uniqueid.Generateid("n")
 ```
 
 Generate number only ID with custom length
 ```
-id, _ := uniqueid.Generateid("n", 6)
+id, err := uniqueid.Generateid("n", 6)
 ```
 
 Generate letter only ID with default length
 ```
-id, _ := uniqueid.Generateid("l")
+id, err := uniqueid.Generateid("l")
 
 ```
 Generate letter only ID with custom length
 ```
-id, _ := uniqueid.Generateid("l",20)
+id, err := uniqueid.Generateid("l",20)
 ```
 
 Generate alphanumeric ID with default length 
 ```
-id, _ := uniqueid.Generateid("a")
+id, err := uniqueid.Generateid("a")
 ```
 
 Generate alphanumeric ID with custom length 
 ```
-id, _ := uniqueid.Generateid("a", 18)
+id, err := uniqueid.Generateid("a", 18)
 ```
 
 ## License
