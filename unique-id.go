@@ -22,7 +22,11 @@ func Generateid(params ...interface{}) (string, error) {
 	case 1:
 		size = 16
 	case 2:
-		size = params[1].(int)
+		if params[1] == nil{
+			size = 16
+		}else {
+			size = params[1].(int)
+		}
 	}
 
 	y := strconv.Itoa(time.Now().Year())[2:]
