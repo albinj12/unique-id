@@ -17,6 +17,7 @@ go get github.com/albinj12/unique-id
 ```
 
 # Usage
+### Number only ID
 Generate number only ID with default length
 ```
 id, err := uniqueid.Generateid("n")
@@ -27,6 +28,12 @@ Generate number only ID with custom length
 id, err := uniqueid.Generateid("n", 6)
 ```
 
+Generate number only ID with default length and prefix
+```
+id, err := uniqueid.Generateid("n", nil, "OD")
+```
+
+### Letter only ID
 Generate letter only ID with default length
 ```
 id, err := uniqueid.Generateid("l")
@@ -37,6 +44,12 @@ Generate letter only ID with custom length
 id, err := uniqueid.Generateid("l",20)
 ```
 
+Generate letter only ID with default length and prefix
+```
+id, err := uniqueid.Generateid("l", nil, "USER")
+```
+
+### Alphanumerical ID
 Generate alphanumeric ID with default length 
 ```
 id, err := uniqueid.Generateid("a")
@@ -46,6 +59,14 @@ Generate alphanumeric ID with custom length
 ```
 id, err := uniqueid.Generateid("a", 18)
 ```
+
+Generate alphnumerical ID with default length and prefix
+```
+id, err := uniqueid.Generateid("a", nil, "uid")
+```
+<br />
+To generate ID with **custom length** and **prefix**, provide length insted of nil as the second argument.While adding prefix the total length will be given length plus length of the prefix string provided.
+
 
 ## License
 
