@@ -33,8 +33,6 @@ func Generateid(params ...interface{}) (string, error) {
 		prefix = params[2].(string)
 	}
 
-	//fmt.Println(prefix)
-
 	y := strconv.Itoa(time.Now().Year())[2:]
 	m := "00" + strconv.Itoa(int(time.Now().Month()))
 	d := "00" + strconv.Itoa(time.Now().Day())
