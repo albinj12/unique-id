@@ -16,18 +16,24 @@ func Generateid(params ...interface{}) (string, error) {
 	rand.Seed(time.Now().UTC().UnixNano())
 
 	var size int
+	prefix := ""
 	switch len(params) {
 	case 0:
 		return "", errors.New("type is required")
 	case 1:
 		size = 16
 	case 2:
+		size = params[1].(int)
+	case 3:
 		if params[1] == nil{
 			size = 16
 		}else {
 			size = params[1].(int)
 		}
+		prefix = params[2].(string)
 	}
+
+	//fmt.Println(prefix)
 
 	y := strconv.Itoa(time.Now().Year())[2:]
 	m := "00" + strconv.Itoa(int(time.Now().Month()))
@@ -53,7 +59,7 @@ func Generateid(params ...interface{}) (string, error) {
 
 	switch params[0] {
 	case "n":
-		return uid, nil
+		return prefix+uid, nil
 	case "l":
 		alphabets := []string{"a", "A", "b", "B", "c", "C", "d", "D", "e", "E", "f", "F", "g", "G", "h", "H", "i", "I", "j", "J", "k", "K", "l", "L", "m", "M", "n", "N", "o", "O", "p", "P", "q", "Q", "r", "R", "s", "S", "t", "T", "u", "U", "v", "V", "w", "W", "x", "X", "y", "Y", "z", "Z"}
 
@@ -64,7 +70,7 @@ func Generateid(params ...interface{}) (string, error) {
 			uidarray[i] = alphabets[j]
 		}
 		uid = strings.Join(uidarray, "")
-		return uid, nil
+		return prefix+uid, nil
 	case "a":
 		alphabets := []string{"a", "A", "b", "B", "c", "C", "d", "D", "e", "E", "f", "F", "g", "G", "h", "H", "i", "I", "j", "J", "k", "K", "l", "L", "m", "M", "n", "N", "o", "O", "p", "P", "q", "Q", "r", "R", "s", "S", "t", "T", "u", "U", "v", "V", "w", "W", "x", "X", "y", "Y", "z", "Z"}
 		totalletters := math.Floor(0.7 * float64(size))
@@ -79,7 +85,7 @@ func Generateid(params ...interface{}) (string, error) {
 			uidarray[v] = alphabets[j]
 		}
 		uid := strings.Join(uidarray, "")
-		return uid, nil
+		return prefix+uid, nil
 	default:
 		return "", errors.New("invalid type specified")
 	}
