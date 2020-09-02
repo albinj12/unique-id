@@ -65,7 +65,7 @@ Generate alphnumerical ID with default length and prefix
 id, err := uniqueid.Generateid("a", nil, "uid")
 ```
 <br />
-To generate ID with **custom length** and **prefix**, provide length insted of nil as the second argument.While adding prefix the total length will be given length plus length of the prefix string provided.
+To generate ID with custom length and prefix, provide length insted of nil as the second argument.While adding prefix the total length will be given length plus length of the prefix string provided.
 
 
 ## License
